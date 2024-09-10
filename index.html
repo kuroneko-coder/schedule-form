@@ -253,41 +253,6 @@
         </form>
         <div id="response-message"></div>
     </div>
-
-    <script>
-    document.getElementById('scheduleForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        var form = this;
-        var formData = new FormData(form);
-        var submitButton = form.querySelector('button[type="submit"]');
-        var responseMessage = document.getElementById('response-message');
-        
-        submitButton.disabled = true;
-        submitButton.textContent = '送信中...';
-        responseMessage.style.display = 'none';
-        
-        // フォームデータをJSONに変換
-        var jsonData = {};
-        formData.forEach((value, key) => {
-            if (!jsonData[key]) {
-                jsonData[key] = formData.getAll(key).length > 1 ? formData.getAll(key) : value;
-            }
-        });
-
-        fetch('https://script.google.com/macros/s/AKfycbxIQsn39-tTIuRE_hk-wqMnR2kYKcAr_fAkGIUFhgOnPtEi0ssHBFQ3FqDbxcoWaOrR/exec', {
-            method: 'POST',
-            body: JSON.stringify(jsonData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.result) {
-                responseMessage.textContent = data.result;
-                responseMessage.className = 'success';
-                form.reset();
-            } else {
-                throw new Error(data.error || '不明なエラーが発生しました。');
-            }
-        })
+    <script src="script.js"></script>
+</body>
+</html>
