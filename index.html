@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生徒スケジュール確認フォーム</title>
     <style>
-        /* 前回と同じCSSスタイル */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
@@ -51,19 +50,6 @@
             display: flex;
             align-items: center;
         }
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .schedule-table th, .schedule-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        .schedule-table th {
-            background-color: #f2f2f2;
-        }
         .submit-button {
             background-color: #4CAF50;
             color: white;
@@ -84,11 +70,38 @@
 <body>
     <div class="container">
         <h1>生徒スケジュール確認フォーム</h1>
-        <form id="scheduleForm" action="https://script.google.com/macros/s/AKfycbzsWcCq525CCCaq7BLnI7BInpaZ0ZhryVt7Zaz318g/dev" method="POST">
+        <form id="scheduleForm" action="https://script.google.com/macros/s/【ウェブアプリURL】/exec" method="POST">
+            
+            <!-- 氏名入力欄 -->
             <div class="form-group">
                 <label for="studentName">氏名</label>
                 <input type="text" id="studentName" name="studentName" required>
             </div>
+
+            <!-- 塾名選択欄 -->
+            <div class="form-group">
+                <label for="schoolName">塾名</label>
+                <select id="schoolName" name="schoolName" required>
+                    <option value="">選択してください</option>
+                    <option value="堀切菖蒲園校">堀切菖蒲園校</option>
+                    <option value="小岩南校">小岩南校</option>
+                    <!-- ここに新しい校名を追加 -->
+                </select>
+            </div>
+
+            <!-- 希望する塾講師名入力欄 -->
+            <div class="form-group">
+                <label for="preferredTeacher">希望する塾講師名</label>
+                <input type="text" id="preferredTeacher" name="preferredTeacher">
+            </div>
+
+            <!-- 除外して欲しい塾講師名入力欄 -->
+            <div class="form-group">
+                <label for="excludedTeacher">除外して欲しい塾講師名</label>
+                <input type="text" id="excludedTeacher" name="excludedTeacher">
+            </div>
+
+            <!-- 学年選択欄 -->
             <div class="form-group">
                 <label for="grade">学年</label>
                 <select id="grade" name="grade" required>
@@ -107,6 +120,8 @@
                     <option value="高3">高校3年生</option>
                 </select>
             </div>
+
+            <!-- 希望科目選択欄 -->
             <div class="form-group">
                 <label>希望科目（複数選択可）</label>
                 <div class="checkbox-group">
@@ -127,6 +142,8 @@
                     </label>
                 </div>
             </div>
+
+            <!-- 空き時間（複数選択可能に修正） -->
             <div class="form-group">
                 <label>空き時間</label>
                 <table class="schedule-table">
@@ -212,6 +229,8 @@
                     </tr>
                 </table>
             </div>
+
+            <!-- 送信ボタン -->
             <button type="submit" class="submit-button">送信</button>
         </form>
     </div>
@@ -221,7 +240,7 @@
         e.preventDefault();
         var form = this;
         var formData = new FormData(form);
-        
+
         fetch(form.action, {
             method: 'POST',
             body: formData
