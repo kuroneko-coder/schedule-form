@@ -4,185 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生徒スケジュール確認フォーム</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
-        <h1 class="text-2xl font-bold text-center mb-6 text-blue-600">生徒スケジュール確認フォーム</h1>
-        <form id="scheduleForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="studentName">
-                    氏名
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="studentName" type="text" placeholder="山田太郎" required>
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="grade">
-                    学年
-                </label>
-                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="grade" required>
-                    <option value="">選択してください</option>
-                    <option value="小1">小学1年生</option>
-                    <option value="小2">小学2年生</option>
-                    <option value="小3">小学3年生</option>
-                    <option value="小4">小学4年生</option>
-                    <option value="小5">小学5年生</option>
-                    <option value="小6">小学6年生</option>
-                    <option value="中1">中学1年生</option>
-                    <option value="中2">中学2年生</option>
-                    <option value="中3">中学3年生</option>
-                    <option value="高1">高校1年生</option>
-                    <option value="高2">高校2年生</option>
-                    <option value="高3">高校3年生</option>
-                </select>
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="subject">
-                    希望科目（複数選択可）
-                </label>
-                <div class="mt-2 flex flex-wrap">
-                    <label class="inline-flex items-center mr-4 mb-2">
-                        <input type="checkbox" class="form-checkbox" name="subject" value="国語">
-                        <span class="ml-2">国語</span>
-                    </label>
-                    <label class="inline-flex items-center mr-4 mb-2">
-                        <input type="checkbox" class="form-checkbox" name="subject" value="算数・数学">
-                        <span class="ml-2">算数・数学</span>
-                    </label>
-                    <label class="inline-flex items-center mr-4 mb-2">
-                        <input type="checkbox" class="form-checkbox" name="subject" value="英語">
-                        <span class="ml-2">英語</span>
-                    </label>
-                    <label class="inline-flex items-center mr-4 mb-2">
-                        <input type="checkbox" class="form-checkbox" name="subject" value="理科">
-                        <span class="ml-2">理科</span>
-                    </label>
-                    <label class="inline-flex items-center mr-4 mb-2">
-                        <input type="checkbox" class="form-checkbox" name="subject" value="社会">
-                        <span class="ml-2">社会</span>
-                    </label>
-                </div>
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2">
-                    空き時間
-                </label>
-                <div class="overflow-x-auto">
-                    <table class="w-full border-collapse text-sm">
-                        <tr>
-                            <th class="border p-2"></th>
-                            <th class="border p-2">月</th>
-                            <th class="border p-2">火</th>
-                            <th class="border p-2">水</th>
-                            <th class="border p-2">木</th>
-                            <th class="border p-2">金</th>
-                            <th class="border p-2">土</th>
-                            <th class="border p-2">日</th>
-                        </tr>
-                        <tr>
-                            <th class="border p-2">9:00 ~ 10:30</th>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="月9:00-10:30"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="火9:00-10:30"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="水9:00-10:30"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="木9:00-10:30"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="金9:00-10:30"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="土9:00-10:30"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="日9:00-10:30"></td>
-                        </tr>
-                        <tr>
-                            <th class="border p-2">10:35 ~ 12:05</th>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="月10:35-12:05"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="火10:35-12:05"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="水10:35-12:05"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="木10:35-12:05"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="金10:35-12:05"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="土10:35-12:05"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="日10:35-12:05"></td>
-                        </tr>
-                        <tr>
-                            <th class="border p-2">12:50 ~ 14:20</th>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="月12:50-14:20"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="火12:50-14:20"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="水12:50-14:20"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="木12:50-14:20"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="金12:50-14:20"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="土12:50-14:20"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="日12:50-14:20"></td>
-                        </tr>
-                        <tr>
-                            <th class="border p-2">14:25 ~ 15:55</th>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="月14:25-15:55"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="火14:25-15:55"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="水14:25-15:55"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="木14:25-15:55"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="金14:25-15:55"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="土14:25-15:55"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="日14:25-15:55"></td>
-                        </tr>
-                        <tr>
-                            <th class="border p-2">16:20 ~ 17:50</th>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="月16:20-17:50"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="火16:20-17:50"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="水16:20-17:50"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="木16:20-17:50"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="金16:20-17:50"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="土16:20-17:50"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="日16:20-17:50"></td>
-                        </tr>
-                        <tr>
-                            <th class="border p-2">17:55 ~ 19:25</th>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="月17:55-19:25"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="火17:55-19:25"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="水17:55-19:25"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="木17:55-19:25"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="金17:55-19:25"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="土17:55-19:25"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="日17:55-19:25"></td>
-                        </tr>
-                        <tr>
-                            <th class="border p-2">19:30 ~ 21:00</th>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="月19:30-21:00"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="火19:30-21:00"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="水19:30-21:00"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="木19:30-21:00"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="金19:30-21:00"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="土19:30-21:00"></td>
-                            <td class="border p-2"><input type="checkbox" name="schedule" value="日19:30-21:00"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="flex items-center justify-between">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    送信
-                </button>
-            </div>
-        </form>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>生徒スケジュール確認フォーム</h1>
+            <form id="scheduleForm" method="POST" action="https://script.google.com/macros/s/AKfycbzkOFiFmxyxMpjC2lOMYIgqL90OEYC_puNNyU7eXLPLBDhXBoUMQz2-ns1jHQDyrxM6/exec">
+                <!-- フォームの内容（変更なし） -->
+                <button type="submit" class="submit-button">送信</button>
+            </form>
+        </div>
     </div>
-
     <script>
-        document.getElementById('scheduleForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const studentName = formData.get('studentName');
-            const grade = formData.get('grade');
-            const subjects = formData.getAll('subject');
-            const schedules = formData.getAll('schedule');
-            
-            const result = `
-                氏名: ${studentName}
-                学年: ${grade}
-                希望科目: ${subjects.join(', ')}
-                空き時間:
-                ${schedules.join('\n                ')}
-            `;
-            
-            alert('以下の内容で送信されました:\n\n' + result);
-            
-            // ここで実際にはサーバーにデータを送信する処理を行います
-            console.log(result);
+    document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this)
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert(result);
+            this.reset(); // フォームをリセット
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('送信中にエラーが発生しました。もう一度お試しください。');
         });
+    });
     </script>
 </body>
 </html>
