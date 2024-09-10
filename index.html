@@ -1,38 +1,29 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生徒スケジュール確認フォーム</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <div class="form-container">
-            <h1>生徒スケジュール確認フォーム</h1>
-            <form id="scheduleForm" method="POST" action="https://script.google.com/macros/s/AKfycbzkOFiFmxyxMpjC2lOMYIgqL90OEYC_puNNyU7eXLPLBDhXBoUMQz2-ns1jHQDyrxM6/exec">
-                <!-- フォームの内容（変更なし） -->
-                <button type="submit" class="submit-button">送信</button>
-            </form>
-        </div>
-    </div>
-    <script>
-    document.getElementById('scheduleForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this)
-        })
-        .then(response => response.text())
-        .then(result => {
-            alert(result);
-            this.reset(); // フォームをリセット
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('送信中にエラーが発生しました。もう一度お試しください。');
-        });
-    });
-    </script>
-</body>
-</html>
+<form id="scheduleForm" method="POST">
+  <!-- フォームの内容（変更なし） -->
+  <button type="submit" class="submit-button">送信</button>
+</form>
+
+<script>
+document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var formData = new FormData(this);
+  
+  fetch('https://script.google.com/macros/s/AKfycbydn_9t_pncA_QbEL4vXVuJjr4as0kWuClRzgViUMD10XqQI2S9QkCfGemAI6xB907k/exec', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) {
+      alert('エラーが発生しました: ' + data.error);
+    } else {
+      alert(data.result);
+      this.reset(); // フォームをリセット
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('送信中にエラーが発生しました。もう一度お試しください。');
+  });
+});
+</script>
