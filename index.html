@@ -34,7 +34,7 @@
             margin-bottom: 5px;
             font-weight: bold;
         }
-        input[type="text"], select {
+        input[type="text"], select, textarea {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
@@ -94,6 +94,11 @@
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+        .explanation {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -123,6 +128,15 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="schoolName">塾名</label>
+                <select id="schoolName" name="schoolName" required>
+                    <option value="">選択してください</option>
+                    <option value="堀切菖蒲園校">堀切菖蒲園校</option>
+                    <option value="小岩南校">小岩南校</option>
+                </select>
+                <p class="explanation">新しい塾を追加する場合は、このselectタグ内に新しいoptionタグを追加してください。</p>
+            </div>
+            <div class="form-group">
                 <label>希望科目（複数選択可）</label>
                 <div class="checkbox-group">
                     <label class="checkbox-label">
@@ -141,6 +155,14 @@
                         <input type="checkbox" name="subject" value="社会"> 社会
                     </label>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="preferredTeachers">希望する先生（複数の場合はカンマで区切ってください）</label>
+                <input type="text" id="preferredTeachers" name="preferredTeachers">
+            </div>
+            <div class="form-group">
+                <label for="excludedTeachers">除外する先生（複数の場合はカンマで区切ってください）</label>
+                <input type="text" id="excludedTeachers" name="excludedTeachers">
             </div>
             <div class="form-group">
                 <label>空き時間（複数選択可）</label>
@@ -269,17 +291,3 @@
                 throw new Error(data.error || '不明なエラーが発生しました。');
             }
         })
-        .catch(error => {
-            console.error('Error:', error);
-            responseMessage.textContent = 'エラーが発生しました: ' + error.message;
-            responseMessage.className = 'error';
-        })
-        .finally(() => {
-            submitButton.disabled = false;
-            submitButton.textContent = '送信';
-            responseMessage.style.display = 'block';
-        });
-    });
-    </script>
-</body>
-</html>
