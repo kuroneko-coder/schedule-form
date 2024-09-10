@@ -99,7 +99,7 @@
 <body>
     <div class="container">
         <h1>生徒スケジュール確認フォーム</h1>
-        <form id="scheduleForm" action="https://script.google.com/macros/s/AKfycbydn_9t_pncA_QbEL4vXVuJjr4as0kWuClRzgViUMD10XqQI2S9QkCfGemAI6xB907k/exec" method="POST">
+        <form id="scheduleForm">
             <div class="form-group">
                 <label for="studentName">氏名</label>
                 <input type="text" id="studentName" name="studentName" required>
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>空き時間</label>
+                <label>空き時間（複数選択可）</label>
                 <table class="schedule-table">
                     <tr>
                         <th></th>
@@ -244,9 +244,20 @@
         submitButton.textContent = '送信中...';
         responseMessage.style.display = 'none';
         
-        fetch(form.action, {
+        // フォームデータをJSONに変換
+        var jsonData = {};
+        formData.forEach((value, key) => {
+            if (!jsonData[key]) {
+                jsonData[key] = formData.getAll(key).length > 1 ? formData.getAll(key) : value;
+            }
+        });
+
+        fetch('https://script.google.com/macros/s/AKfycbydn_9t_pncA_QbEL4vXVuJjr4as0kWuClRzgViUMD10XqQI2S9QkCfGemAI6xB907k/exec', {
             method: 'POST',
-            body: formData
+            body: JSON.stringify(jsonData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
         .then(response => response.json())
         .then(data => {
@@ -255,12 +266,12 @@
                 responseMessage.className = 'success';
                 form.reset();
             } else {
-                throw new Error('不明なエラーが発生しました。');
+                throw new Error(data.error || '不明なエラーが発生しました。');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            responseMessage.textContent = 'エラーが発生しました。もう一度お試しください。';
+            responseMessage.textContent = 'エラーが発生しました: ' + error.message;
             responseMessage.className = 'error';
         })
         .finally(() => {
