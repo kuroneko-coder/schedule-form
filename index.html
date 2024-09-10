@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生徒スケジュール確認フォーム</title>
     <style>
-        /* 前回と同じCSSスタイル */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
@@ -78,6 +77,22 @@
         }
         .submit-button:hover {
             background-color: #45a049;
+        }
+        #response-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
     </style>
 </head>
@@ -214,6 +229,7 @@
             </div>
             <button type="submit" class="submit-button">送信</button>
         </form>
+        <div id="response-message"></div>
     </div>
 
     <script>
@@ -221,19 +237,36 @@
         e.preventDefault();
         var form = this;
         var formData = new FormData(form);
+        var submitButton = form.querySelector('button[type="submit"]');
+        var responseMessage = document.getElementById('response-message');
+        
+        submitButton.disabled = true;
+        submitButton.textContent = '送信中...';
+        responseMessage.style.display = 'none';
         
         fetch(form.action, {
             method: 'POST',
             body: formData
         })
-        .then(response => response.text())
-        .then(result => {
-            alert('送信が完了しました。ありがとうございます。');
-            form.reset();
+        .then(response => response.json())
+        .then(data => {
+            if (data.result) {
+                responseMessage.textContent = data.result;
+                responseMessage.className = 'success';
+                form.reset();
+            } else {
+                throw new Error('不明なエラーが発生しました。');
+            }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('送信中にエラーが発生しました。もう一度お試しください。');
+            responseMessage.textContent = 'エラーが発生しました。もう一度お試しください。';
+            responseMessage.className = 'error';
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = '送信';
+            responseMessage.style.display = 'block';
         });
     });
     </script>
