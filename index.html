@@ -84,8 +84,7 @@
 <body>
     <div class="container">
         <h1>生徒スケジュール確認フォーム</h1>
-        <form id="scheduleForm">
-            <!-- 氏名、学年、希望科目の部分は変更なし -->
+        <form id="scheduleForm" action="https://script.google.com/macros/s/AKfycbydn_9t_pncA_QbEL4vXVuJjr4as0kWuClRzgViUMD10XqQI2S9QkCfGemAI6xB907k/exec" method="POST">
             <div class="form-group">
                 <label for="studentName">氏名</label>
                 <input type="text" id="studentName" name="studentName" required>
@@ -222,24 +221,21 @@
         e.preventDefault();
         var form = this;
         var formData = new FormData(form);
-        var queryString = new URLSearchParams(formData).toString();
         
-        var script = document.createElement('script');
-        script.src = 'https://script.google.com/macros/s/AKfycbydn_9t_pncA_QbEL4vXVuJjr4as0kWuClRzgViUMD10XqQI2S9QkCfGemAI6xB907k/exec' + '?' + queryString + '&callback=formSubmitCallback';
-        document.body.appendChild(script);
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert('送信が完了しました。ありがとうございます。');
+            form.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('送信中にエラーが発生しました。もう一度お試しください。');
+        });
     });
-
-    function formSubmitCallback(response) {
-        if (response.result) {
-            alert(response.result);
-            document.getElementById('scheduleForm').reset();
-        } else if (response.error) {
-            alert('エラーが発生しました: ' + response.error);
-        }
-        // スクリプトタグを削除
-        var script = document.body.lastChild;
-        document.body.removeChild(script);
-    }
     </script>
 </body>
 </html>
