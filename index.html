@@ -72,8 +72,44 @@
 </head>
 <body>
 
-    <!-- ページ 1 -->
+    <!-- ページ 1 (氏名, 塾名, 学年入力) -->
     <div class="container active" id="page-1">
+        <h1>基本情報</h1>
+        <div class="form-group">
+            <label for="studentName">氏名</label>
+            <input type="text" id="studentName" name="studentName" required>
+        </div>
+        <div class="form-group">
+            <label for="schoolName">塾名</label>
+            <select id="schoolName" name="schoolName" required>
+                <option value="">選択してください</option>
+                <option value="堀切菖蒲園校">堀切菖蒲園校</option>
+                <option value="小岩南校">小岩南校</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="grade">学年</label>
+            <select id="grade" name="grade" required>
+                <option value="">選択してください</option>
+                <option value="小1">小学1年生</option>
+                <option value="小2">小学2年生</option>
+                <option value="小3">小学3年生</option>
+                <option value="小4">小学4年生</option>
+                <option value="小5">小学5年生</option>
+                <option value="小6">小学6年生</option>
+                <option value="中1">中学1年生</option>
+                <option value="中2">中学2年生</option>
+                <option value="中3">中学3年生</option>
+                <option value="高1">高校1年生</option>
+                <option value="高2">高校2年生</option>
+                <option value="高3">高校3年生</option>
+            </select>
+        </div>
+        <button class="next-button" onclick="nextPage()">次へ</button>
+    </div>
+
+    <!-- ページ 2 (科目: 国語) -->
+    <div class="container" id="page-2">
         <h1>科目: 国語</h1>
         <div class="form-group">
             <label for="preferredTeacherJapanese">担当して欲しい講師</label>
@@ -88,14 +124,19 @@
             <div class="checkbox-group">
                 <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月9:00-10:30"> 月9:00-10:30</label>
                 <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火10:35-12:05"> 火10:35-12:05</label>
-                <!-- 他の時間割も追加 -->
+                <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水12:50-14:20"> 水12:50-14:20</label>
+                <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木14:25-15:55"> 木14:25-15:55</label>
+                <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金16:20-17:50"> 金16:20-17:50</label>
+                <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土17:55-19:25"> 土17:55-19:25</label>
+                <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="日19:30-21:00"> 日19:30-21:00</label>
             </div>
         </div>
+        <button class="prev-button" onclick="prevPage()">前へ</button>
         <button class="next-button" onclick="nextPage()">次へ</button>
     </div>
 
-    <!-- ページ 2 -->
-    <div class="container" id="page-2">
+    <!-- ページ 3 (科目: 算数・数学) -->
+    <div class="container" id="page-3">
         <h1>科目: 算数・数学</h1>
         <div class="form-group">
             <label for="preferredTeacherMath">担当して欲しい講師</label>
@@ -110,30 +151,11 @@
             <div class="checkbox-group">
                 <label class="checkbox-label"><input type="checkbox" name="scheduleMath" value="月9:00-10:30"> 月9:00-10:30</label>
                 <label class="checkbox-label"><input type="checkbox" name="scheduleMath" value="火10:35-12:05"> 火10:35-12:05</label>
-                <!-- 他の時間割も追加 -->
-            </div>
-        </div>
-        <button class="prev-button" onclick="prevPage()">前へ</button>
-        <button class="next-button" onclick="nextPage()">次へ</button>
-    </div>
-
-    <!-- ページ 3 -->
-    <div class="container" id="page-3">
-        <h1>科目: 英語</h1>
-        <div class="form-group">
-            <label for="preferredTeacherEnglish">担当して欲しい講師</label>
-            <input type="text" id="preferredTeacherEnglish" name="preferredTeacherEnglish">
-        </div>
-        <div class="form-group">
-            <label for="excludedTeacherEnglish">除外して欲しい講師</label>
-            <input type="text" id="excludedTeacherEnglish" name="excludedTeacherEnglish">
-        </div>
-        <div class="form-group">
-            <label>時間割</label>
-            <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="scheduleEnglish" value="月9:00-10:30"> 月9:00-10:30</label>
-                <label class="checkbox-label"><input type="checkbox" name="scheduleEnglish" value="火10:35-12:05"> 火10:35-12:05</label>
-                <!-- 他の時間割も追加 -->
+                <label class="checkbox-label"><input type="checkbox" name="scheduleMath" value="水12:50-14:20"> 水12:50-14:20</label>
+                <label class="checkbox-label"><input type="checkbox" name="scheduleMath" value="木14:25-15:55"> 木14:25-15:55</label>
+                <label class="checkbox-label"><input type="checkbox" name="scheduleMath" value="金16:20-17:50"> 金16:20-17:50</label>
+                <label class="checkbox-label"><input type="checkbox" name="scheduleMath" value="土17:55-19:25"> 土17:55-19:25</label>
+                <label class="checkbox-label"><input type="checkbox" name="scheduleMath" value="日19:30-21:00"> 日19:30-21:00</label>
             </div>
         </div>
         <button class="prev-button" onclick="prevPage()">前へ</button>
