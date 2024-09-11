@@ -14,7 +14,7 @@
             padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 8px;
@@ -45,14 +45,17 @@
             border-radius: 4px;
             font-size: 16px;
         }
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .checkbox-label {
-            display: flex;
-            align-items: center;
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .schedule-table th {
+            background-color: #f2f2f2;
         }
         .submit-button, .next-button, .prev-button {
             background-color: #4CAF50;
@@ -110,376 +113,137 @@
             <button class="next-button" type="button" onclick="nextPage()">次へ</button>
         </div>
 
-        <!-- 科目: 国語 -->
-        <div class="container" id="page-2">
-            <h1>科目: 国語</h1>
-            <div class="form-group">
-                <label for="preferredTeacherJapanese">担当して欲しい講師</label>
-                <input type="text" id="preferredTeacherJapanese" name="preferredTeacherJapanese">
-            </div>
-            <div class="form-group">
-                <label for="excludedTeacherJapanese">除外して欲しい講師</label>
-                <input type="text" id="excludedTeacherJapanese" name="excludedTeacherJapanese">
-            </div>
-            <div class="form-group">
-                <label>時間割（9:00~21:00, 月~土）</label>
-                <div class="checkbox-group">
-                    <!-- 月曜日から土曜日の時間割 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月9:00-10:30"> 月9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月10:35-12:05"> 月10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月12:50-14:20"> 月12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月14:25-15:55"> 月14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月16:20-17:50"> 月16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月17:55-19:25"> 月17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月19:30-21:00"> 月19:30-21:00</label>
-
-                    <!-- 火曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火9:00-10:30"> 火9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火10:35-12:05"> 火10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火12:50-14:20"> 火12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火14:25-15:55"> 火14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火16:20-17:50"> 火16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火17:55-19:25"> 火17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火19:30-21:00"> 火19:30-21:00</label>
-
-                    <!-- 水曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水9:00-10:30"> 水9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水10:35-12:05"> 水10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水12:50-14:20"> 水12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水14:25-15:55"> 水14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水16:20-17:50"> 水16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水17:55-19:25"> 水17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水19:30-21:00"> 水19:30-21:00</label>
-
-                    <!-- 木曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木9:00-10:30"> 木9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木10:35-12:05"> 木10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木12:50-14:20"> 木12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木14:25-15:55"> 木14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木16:20-17:50"> 木16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木17:55-19:25"> 木17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木19:30-21:00"> 木19:30-21:00</label>
-
-                    <!-- 金曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金9:00-10:30"> 金9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金10:35-12:05"> 金10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金12:50-14:20"> 金12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金14:25-15:55"> 金14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金16:20-17:50"> 金16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金17:55-19:25"> 金17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金19:30-21:00"> 金19:30-21:00</label>
-
-                    <!-- 土曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土9:00-10:30"> 土9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土10:35-12:05"> 土10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土12:50-14:20"> 土12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土14:25-15:55"> 土14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土16:20-17:50"> 土16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土17:55-19:25"> 土17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土19:30-21:00"> 土19:30-21:00</label>
+        <!-- 科目ページのテンプレート -->
+        <template id="subject-template">
+            <div class="container" id="page-{subjectId}">
+                <h1>科目: {subjectName}</h1>
+                <div class="form-group">
+                    <label for="preferredTeacher{subjectId}">担当して欲しい講師</label>
+                    <input type="text" id="preferredTeacher{subjectId}" name="preferredTeacher{subjectId}">
                 </div>
-            </div>
-            <button class="prev-button" type="button" onclick="prevPage()">前へ</button>
-            <button class="next-button" type="button" onclick="nextPage()">次へ</button>
-        </div>
-
-        <!-- ページ 3 (科目: 算数・数学) -->
-        <div class="container" id="page-3">
-            <h1>科目: 算数・数学</h1>
-            <div class="form-group">
-                <label for="preferredTeacherMath">担当して欲しい講師</label>
-                <input type="text" id="preferredTeacherMath" name="preferredTeacherMath">
-            </div>
-            <div class="form-group">
-                <label for="excludedTeacherMath">除外して欲しい講師</label>
-                <input type="text" id="excludedTeacherMath" name="excludedTeacherMath">
-            </div>
-            <div class="form-group">
-                <label>時間割（9:00~21:00, 月~土）</label>
-                <div class="checkbox-group">
-                    <!-- 月曜日から土曜日の時間割 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月9:00-10:30"> 月9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月10:35-12:05"> 月10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月12:50-14:20"> 月12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月14:25-15:55"> 月14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月16:20-17:50"> 月16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月17:55-19:25"> 月17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月19:30-21:00"> 月19:30-21:00</label>
-
-                    <!-- 火曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火9:00-10:30"> 火9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火10:35-12:05"> 火10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火12:50-14:20"> 火12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火14:25-15:55"> 火14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火16:20-17:50"> 火16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火17:55-19:25"> 火17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火19:30-21:00"> 火19:30-21:00</label>
-
-                    <!-- 水曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水9:00-10:30"> 水9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水10:35-12:05"> 水10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水12:50-14:20"> 水12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水14:25-15:55"> 水14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水16:20-17:50"> 水16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水17:55-19:25"> 水17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水19:30-21:00"> 水19:30-21:00</label>
-
-                    <!-- 木曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木9:00-10:30"> 木9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木10:35-12:05"> 木10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木12:50-14:20"> 木12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木14:25-15:55"> 木14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木16:20-17:50"> 木16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木17:55-19:25"> 木17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木19:30-21:00"> 木19:30-21:00</label>
-
-                    <!-- 金曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金9:00-10:30"> 金9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金10:35-12:05"> 金10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金12:50-14:20"> 金12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金14:25-15:55"> 金14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金16:20-17:50"> 金16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金17:55-19:25"> 金17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金19:30-21:00"> 金19:30-21:00</label>
-
-                    <!-- 土曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土9:00-10:30"> 土9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土10:35-12:05"> 土10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土12:50-14:20"> 土12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土14:25-15:55"> 土14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土16:20-17:50"> 土16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土17:55-19:25"> 土17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土19:30-21:00"> 土19:30-21:00</label>
+                <div class="form-group">
+                    <label for="excludedTeacher{subjectId}">除外して欲しい講師</label>
+                    <input type="text" id="excludedTeacher{subjectId}" name="excludedTeacher{subjectId}">
                 </div>
-            </div>
-            <button class="prev-button" type="button" onclick="prevPage()">前へ</button>
-            <button class="next-button" type="button" onclick="nextPage()">次へ</button>
-        </div>
-
-        <!-- ページ 4 (科目: 英語) -->
-        <div class="container" id="page-4">
-            <h1>科目: 英語</h1>
-            <div class="form-group">
-                <label for="preferredTeacherEnglish">担当して欲しい講師</label>
-                <input type="text" id="preferredTeacherEnglish" name="preferredTeacherEnglish">
-            </div>
-            <div class="form-group">
-                <label for="excludedTeacherEnglish">除外して欲しい講師</label>
-                <input type="text" id="excludedTeacherEnglish" name="excludedTeacherEnglish">
-            </div>
-            <div class="form-group">
-                <label>時間割（9:00~21:00, 月~土）</label>
-                <div class="checkbox-group">
-                    <!-- 月曜日から土曜日の時間割 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月9:00-10:30"> 月9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月10:35-12:05"> 月10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月12:50-14:20"> 月12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月14:25-15:55"> 月14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月16:20-17:50"> 月16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月17:55-19:25"> 月17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月19:30-21:00"> 月19:30-21:00</label>
-
-                    <!-- 火曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火9:00-10:30"> 火9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火10:35-12:05"> 火10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火12:50-14:20"> 火12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火14:25-15:55"> 火14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火16:20-17:50"> 火16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火17:55-19:25"> 火17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火19:30-21:00"> 火19:30-21:00</label>
-
-                    <!-- 水曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水9:00-10:30"> 水9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水10:35-12:05"> 水10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水12:50-14:20"> 水12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水14:25-15:55"> 水14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水16:20-17:50"> 水16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水17:55-19:25"> 水17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水19:30-21:00"> 水19:30-21:00</label>
-
-                    <!-- 木曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木9:00-10:30"> 木9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木10:35-12:05"> 木10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木12:50-14:20"> 木12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木14:25-15:55"> 木14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木16:20-17:50"> 木16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木17:55-19:25"> 木17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木19:30-21:00"> 木19:30-21:00</label>
-
-                    <!-- 金曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金9:00-10:30"> 金9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金10:35-12:05"> 金10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金12:50-14:20"> 金12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金14:25-15:55"> 金14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金16:20-17:50"> 金16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金17:55-19:25"> 金17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金19:30-21:00"> 金19:30-21:00</label>
-
-                    <!-- 土曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土9:00-10:30"> 土9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土10:35-12:05"> 土10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土12:50-14:20"> 土12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土14:25-15:55"> 土14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土16:20-17:50"> 土16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土17:55-19:25"> 土17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土19:30-21:00"> 土19:30-21:00</label>
+                <div class="form-group">
+                    <label>時間割（9:00~21:00, 月~土）</label>
+                    <table class="schedule-table">
+                        <tr>
+                            <th>時間帯</th>
+                            <th>月</th>
+                            <th>火</th>
+                            <th>水</th>
+                            <th>木</th>
+                            <th>金</th>
+                            <th>土</th>
+                        </tr>
+                        <tr>
+                            <td>9:00-10:30</td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="月9:00-10:30"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="火9:00-10:30"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="水9:00-10:30"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="木9:00-10:30"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="金9:00-10:30"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="土9:00-10:30"></td>
+                        </tr>
+                        <tr>
+                            <td>10:35-12:05</td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="月10:35-12:05"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="火10:35-12:05"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="水10:35-12:05"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="木10:35-12:05"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="金10:35-12:05"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="土10:35-12:05"></td>
+                        </tr>
+                        <tr>
+                            <td>12:50-14:20</td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="月12:50-14:20"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="火12:50-14:20"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="水12:50-14:20"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="木12:50-14:20"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="金12:50-14:20"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="土12:50-14:20"></td>
+                        </tr>
+                        <tr>
+                            <td>14:25-15:55</td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="月14:25-15:55"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="火14:25-15:55"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="水14:25-15:55"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="木14:25-15:55"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="金14:25-15:55"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="土14:25-15:55"></td>
+                        </tr>
+                        <tr>
+                            <td>16:20-17:50</td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="月16:20-17:50"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="火16:20-17:50"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="水16:20-17:50"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="木16:20-17:50"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="金16:20-17:50"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="土16:20-17:50"></td>
+                        </tr>
+                        <tr>
+                            <td>17:55-19:25</td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="月17:55-19:25"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="火17:55-19:25"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="水17:55-19:25"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="木17:55-19:25"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="金17:55-19:25"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="土17:55-19:25"></td>
+                        </tr>
+                        <tr>
+                            <td>19:30-21:00</td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="月19:30-21:00"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="火19:30-21:00"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="水19:30-21:00"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="木19:30-21:00"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="金19:30-21:00"></td>
+                            <td><input type="checkbox" name="schedule{subjectId}" value="土19:30-21:00"></td>
+                        </tr>
+                    </table>
                 </div>
+                <button class="prev-button" type="button" onclick="prevPage()">前へ</button>
+                <button class="next-button" type="button" onclick="nextPage()">次へ</button>
             </div>
-            <button class="prev-button" type="button" onclick="prevPage()">前へ</button>
-            <button class="next-button" type="button" onclick="nextPage()">次へ</button>
-        </div>
-
-        <!-- ページ 5 (科目: 理科) -->
-        <div class="container" id="page-5">
-            <h1>科目: 理科</h1>
-            <div class="form-group">
-                <label for="preferredTeacherScience">担当して欲しい講師</label>
-                <input type="text" id="preferredTeacherScience" name="preferredTeacherScience">
-            </div>
-            <div class="form-group">
-                <label for="excludedTeacherScience">除外して欲しい講師</label>
-                <input type="text" id="excludedTeacherScience" name="excludedTeacherScience">
-            </div>
-            <div class="form-group">
-                <label>時間割（9:00~21:00, 月~土）</label>
-                <div class="checkbox-group">
-                    <!-- 月曜日から土曜日の時間割 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月9:00-10:30"> 月9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月10:35-12:05"> 月10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月12:50-14:20"> 月12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月14:25-15:55"> 月14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月16:20-17:50"> 月16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月17:55-19:25"> 月17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月19:30-21:00"> 月19:30-21:00</label>
-
-                    <!-- 火曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火9:00-10:30"> 火9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火10:35-12:05"> 火10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火12:50-14:20"> 火12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火14:25-15:55"> 火14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火16:20-17:50"> 火16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火17:55-19:25"> 火17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火19:30-21:00"> 火19:30-21:00</label>
-
-                    <!-- 水曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水9:00-10:30"> 水9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水10:35-12:05"> 水10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水12:50-14:20"> 水12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水14:25-15:55"> 水14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水16:20-17:50"> 水16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水17:55-19:25"> 水17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水19:30-21:00"> 水19:30-21:00</label>
-
-                    <!-- 木曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木9:00-10:30"> 木9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木10:35-12:05"> 木10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木12:50-14:20"> 木12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木14:25-15:55"> 木14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木16:20-17:50"> 木16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木17:55-19:25"> 木17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木19:30-21:00"> 木19:30-21:00</label>
-
-                    <!-- 金曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金9:00-10:30"> 金9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金10:35-12:05"> 金10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金12:50-14:20"> 金12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金14:25-15:55"> 金14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金16:20-17:50"> 金16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金17:55-19:25"> 金17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金19:30-21:00"> 金19:30-21:00</label>
-
-                    <!-- 土曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土9:00-10:30"> 土9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土10:35-12:05"> 土10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土12:50-14:20"> 土12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土14:25-15:55"> 土14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土16:20-17:50"> 土16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土17:55-19:25"> 土17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土19:30-21:00"> 土19:30-21:00</label>
-                </div>
-            </div>
-            <button class="prev-button" type="button" onclick="prevPage()">前へ</button>
-            <button class="next-button" type="button" onclick="nextPage()">次へ</button>
-        </div>
-
-        <!-- ページ 6 (科目: 社会) -->
-        <div class="container" id="page-6">
-            <h1>科目: 社会</h1>
-            <div class="form-group">
-                <label for="preferredTeacherSocial">担当して欲しい講師</label>
-                <input type="text" id="preferredTeacherSocial" name="preferredTeacherSocial">
-            </div>
-            <div class="form-group">
-                <label for="excludedTeacherSocial">除外して欲しい講師</label>
-                <input type="text" id="excludedTeacherSocial" name="excludedTeacherSocial">
-            </div>
-            <div class="form-group">
-                <label>時間割（9:00~21:00, 月~土）</label>
-                <div class="checkbox-group">
-                    <!-- 月曜日から土曜日の時間割 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月9:00-10:30"> 月9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月10:35-12:05"> 月10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月12:50-14:20"> 月12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月14:25-15:55"> 月14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月16:20-17:50"> 月16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月17:55-19:25"> 月17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="月19:30-21:00"> 月19:30-21:00</label>
-
-                    <!-- 火曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火9:00-10:30"> 火9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火10:35-12:05"> 火10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火12:50-14:20"> 火12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火14:25-15:55"> 火14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火16:20-17:50"> 火16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火17:55-19:25"> 火17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="火19:30-21:00"> 火19:30-21:00</label>
-
-                    <!-- 水曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水9:00-10:30"> 水9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水10:35-12:05"> 水10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水12:50-14:20"> 水12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水14:25-15:55"> 水14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水16:20-17:50"> 水16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水17:55-19:25"> 水17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="水19:30-21:00"> 水19:30-21:00</label>
-
-                    <!-- 木曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木9:00-10:30"> 木9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木10:35-12:05"> 木10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木12:50-14:20"> 木12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木14:25-15:55"> 木14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木16:20-17:50"> 木16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木17:55-19:25"> 木17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="木19:30-21:00"> 木19:30-21:00</label>
-
-                    <!-- 金曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金9:00-10:30"> 金9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金10:35-12:05"> 金10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金12:50-14:20"> 金12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金14:25-15:55"> 金14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金16:20-17:50"> 金16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金17:55-19:25"> 金17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="金19:30-21:00"> 金19:30-21:00</label>
-
-                    <!-- 土曜日 -->
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土9:00-10:30"> 土9:00-10:30</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土10:35-12:05"> 土10:35-12:05</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土12:50-14:20"> 土12:50-14:20</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土14:25-15:55"> 土14:25-15:55</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土16:20-17:50"> 土16:20-17:50</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土17:55-19:25"> 土17:55-19:25</label>
-                    <label class="checkbox-label"><input type="checkbox" name="scheduleJapanese" value="土19:30-21:00"> 土19:30-21:00</label>
-                </div>
-            </div>
-            <button class="prev-button" type="button" onclick="prevPage()">前へ</button>
-            <button class="submit-button" type="submit">送信</button>
-        </div>
+        </template>
 
     </form>
 
     <script>
     let currentPage = 1;
     const totalPages = 6;
+    const subjects = [
+        {id: 'Japanese', name: '国語'},
+        {id: 'Math', name: '算数・数学'},
+        {id: 'English', name: '英語'},
+        {id: 'Science', name: '理科'},
+        {id: 'Social', name: '社会'}
+    ];
+
+    function createSubjectPages() {
+        const template = document.getElementById('subject-template');
+        const form = document.getElementById('scheduleForm');
+
+        subjects.forEach((subject, index) => {
+            const pageNumber = index + 2;
+            const clone = template.content.cloneNode(true);
+            const container = clone.querySelector('.container');
+            
+            container.id = `page-${pageNumber}`;
+            container.innerHTML = container.innerHTML
+                .replace(/{subjectId}/g, subject.id)
+                .replace(/{subjectName}/g, subject.name);
+
+            if (pageNumber === totalPages) {
+                const nextButton = container.querySelector('.next-button');
+                nextButton.textContent = '送信';
+                nextButton.type = 'submit';
+                nextButton.onclick = null;
+            }
+
+            form.appendChild(clone);
+        });
+    }
 
     function showPage(pageNumber) {
         for (let i = 1; i <= totalPages; i++) {
@@ -501,6 +265,8 @@
             showPage(currentPage);
         }
     }
+
+    createSubjectPages();
     </script>
 
 </body>
